@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="k">
+<title> Landing Page</title>
+<link rel="stylesheet" href="">
+<script type="text/javascript" src="../assets/plugins/jquery/jquery.min.js"></script>
+<script>
+  // for parsing url
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    console.debug(window.location.href);
+    console.info(results);
+    if (results)
+      return results[1] || 0;
+    else
+      return null;
+  }
+  var baseGrantUrl = $.urlParam('base_grant_url');
+  var url = decodeURIComponent(baseGrantUrl);
+
+  // redirect to wifiotg server
+  setTimeout(function() {
+    window.location.href = decodeURI(url);
+  }, 3000);
+</script>
+</head>
+<body>
+  <h1>3rd-party Landing Page</h1>
+  <!--
+      the clients information will be forwarded to 3rd-party server.
+      redirect the client to base_grant_url to continue the activity.
+  -->
+  <!--
+      query parameters:
+          base_grant_url (callback for wifiotg service)
+          client_mac (visitor device mac)
+          node_id (inode mac)
+  -->
+</body>
+</html>
